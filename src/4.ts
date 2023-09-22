@@ -30,6 +30,10 @@ abstract class House implements IHouse {
     protected door: boolean = false
     protected key: Key
     private tenants: Person[] = []
+    constructor(key: Key){
+        this.key = key
+    }
+
 
     comeIn(person: Person):void{
         if(person.getKey() === this.key){
@@ -43,8 +47,6 @@ abstract class House implements IHouse {
 }
 
 class MyHouse extends House {
-
-    constructor(public key:Key){super()}
     public openDoor(key: Key): boolean {
         if(this.key.getSignature() === key.getSignature()){
             return true
